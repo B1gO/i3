@@ -17,3 +17,9 @@ zensu
 
 
 lxappearance
+
+# network manager
+network-manager-applet     nm-applet
+
+# bar
+polybar
