@@ -1,4 +1,4 @@
-# this is mod+d
+# menu
 dmenu-manjaro
 morc_menu
 bmenu
@@ -10,16 +10,22 @@ volumeicon
 nitrogen
 
 setup
+
+# file manager
 pcmanfm
 
-# gksu 
+# gksu for sudo mode
 zensu
 
 
+# change the appearance
 lxappearance
 
 # network manager
 network-manager-applet     nm-applet
 
 # bar
-polybar
+i3status
+
+# bbswitch for switch graphic card between standalone graphics/vedio card and integrated graphic/video card
+bbswitch
