@@ -292,6 +292,9 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 bindsym XF86KbdBrightnessUp exec light -A 5
 bindsym XF86KbdBrightnessDown exec light -U 5
+bindsym $mod+Shift+n, exec /home/lyu/.config/i3/xrandrexternal2k.sh
+bindsym $mod+Ctrl+n exec /home/lyu/.config/i3/xrandrexternal4k.sh
+
 
 # exec --no-startup-id pulseaudio
 exec --no-startup-id pa-applet
@@ -432,20 +435,15 @@ font pango:monospace 8
 
 bar {
 	position top
-#	i3bar_command i3bar -t
+	# call i3bar
+	i3bar_command i3bar
+	status_command i3status
    	font xft:URWGothic-Book 12
 	height 18
-
-	# weather
-	status_command i3status | python3 ~/.config/i3/weather.py
-	# call i3bar
-	status_command i3status
 
 	# bar hide or not?
 	#mode hide
 	
-	# strip workspace name
-	strip_workspace_numbers no
 
 	# define the separator symbol
 	separator_symbol " | "
@@ -453,11 +451,10 @@ bar {
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 	tray_output primary
 	tray_output eDP1
+	tray_output HDMI1
 
     output primary
     output HDMI1
-    #status_command i3status
-
 
 	bindsym button4 nop
 	bindsym button5 nop
@@ -466,8 +463,7 @@ bar {
     colors {
         background #222D31
 #10101000
-        statusline #FFFFFF
-#F9FAF9
+        statusline #F9FAF9
         separator  #3399FF
 #454947
 
@@ -485,6 +481,7 @@ bar {
         binding_mode       #16a085 #2C2C2C #F9FAF9
         urgent_workspace   #16a085 #FDF6E3 #E5201D
     }
+
 }
 
 
