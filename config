@@ -81,31 +81,30 @@ assign [class="netease-cloud-music"] $ws8
 
 
 
-#set $monitor_left DP-1-1-8
-#set $monitor_right eDP-1-1
-
+# set $monitor_left DP-1-1-8
+# set $monitor_right eDP-1-1
+set $monitor_left HDMI1
+set $monitor_right eDP1
 
 # switch to output
 # bindsym $mod+shift+w focus output $monitor_left
 # bindsym $mod+shift+c focus output $monitor_right
+#bindsym $mod+shift+w move output $monitor_left
+#bindsym $mod+shift+c move output $monitor_right
 
 bindsym mod+Left move workspace to output $monitor_left
 bindsym mod+Right move workspace to output $monitor_right
 
 
 workspace $WS1 output $monitor_left
-workspace $WS2 output $monitor_left
+workspace $WS2 output $monitor_right
 workspace $WS3 output $monitor_right
 workspace $WS4 output $monitor_left
-workspace $WS5 output $monitor_left
+workspace $WS5 output $monitor_right
 workspace $WS6 output $monitor_right
 workspace $WS7 output $monitor_right
 workspace $WS8 output $monitor_left
 workspace $WS9 output $monitor_left
-workspace $WS0 output $monitor_left
-
-
-
 
 #***************************  窗口管理  *****************************
 
@@ -137,10 +136,10 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
+#bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+#bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -262,13 +261,15 @@ bindsym $mod+Shift+F3 exec gksu pcmanfm
 bindsym $mod+t exec --no-startup-id pkill compton 
 bindsym $mod+Ctrl+t exec --no-startup-id compton -f
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-bindsym Print exec --no-startup-id i3-scrot
+#bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+bindsym $mod+Ctrl+Print --release exec --no-startup-id i3-scrot -s -c # TODO
 bindsym $mod+Shift+F1 exec xdg-open /usr/share/doc/manjaro/i3_help_live.pdf  # TODO
 bindsym $mod+Ctrl+x --release exec --no-startup-id nxkill
 bindsym $mod+p  exec gnome-terminal -e  "fcitx"  # for sougou
 bindsym $mod+Shift+p exec gnome-terminal -e 'pkill /usr/bin/dbus-daemon && pkill /usr/bin/fcitx-dbus-watcher && pkill fcitx ' # shutdown sougou
+
 #	status_command i3blocks -c ~/.config/i3/i3blocks.conf
 
 ################################################################################################
@@ -276,13 +277,12 @@ bindsym $mod+Shift+p exec gnome-terminal -e 'pkill /usr/bin/dbus-daemon && pkill
 ################################################################################################
 
 exec --no-startup-id volumeicon
-
 bindsym $mod+Ctrl+m exec gnome-terminal -e 'alsamixer'
 bindsym $mod+Ctrl+Shift+m exec gnome-terminal -e 'netease-cloud-music'
 
 # volume control
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2%- unmute
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
 
@@ -431,7 +431,8 @@ font pango:monospace 8
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
   client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
-  client.background       #2B2C2B
+#  client.background       #2B2C2B
+  client.background       $term-background
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 
@@ -509,6 +510,10 @@ smart_gaps on
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
 
+# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
