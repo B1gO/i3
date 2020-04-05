@@ -97,10 +97,10 @@ bindsym mod+Right move workspace to output $monitor_right
 
 
 workspace $WS1 output $monitor_left
-workspace $WS2 output $monitor_left
+workspace $WS2 output $monitor_right
 workspace $WS3 output $monitor_right
 workspace $WS4 output $monitor_left
-workspace $WS5 output $monitor_left
+workspace $WS5 output $monitor_right
 workspace $WS6 output $monitor_right
 workspace $WS7 output $monitor_right
 workspace $WS8 output $monitor_left
@@ -264,8 +264,8 @@ bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart du
 #bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-bindsym $mod+Ctrl+Print --release exec --no-startup-id i3-scrot -s -c # TODO
-bindsym $mod+Shift+F1 exec xdg-open /usr/share/doc/manjaro/i3_help_live.pdf  # TODO
+bindsym $mod+Ctrl+Print --release exec --no-startup-id scrot -s -e 'xclip -selection clipboard -t "image/png" < $f'
+bindsym $mod+Shift+F1 exec xdg-open /usr/share/doc/manjaro/i3_help_live.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id nxkill
 bindsym $mod+p  exec gnome-terminal -e  "fcitx"  # for sougou
 bindsym $mod+Shift+p exec gnome-terminal -e 'pkill /usr/bin/dbus-daemon && pkill /usr/bin/fcitx-dbus-watcher && pkill fcitx ' # shutdown sougou
@@ -281,8 +281,8 @@ bindsym $mod+Ctrl+m exec gnome-terminal -e 'alsamixer'
 bindsym $mod+Ctrl+Shift+m exec gnome-terminal -e 'netease-cloud-music'
 
 # volume control
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2%- unmute
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
 
@@ -431,7 +431,8 @@ font pango:monospace 8
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
   client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
-  client.background       #2B2C2B
+#  client.background       #2B2C2B
+  client.background       $term-background
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 
