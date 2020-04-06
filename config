@@ -255,7 +255,7 @@ bindsym $mod+Ctrl+b exec gnome-terminal -e 'bmenu'
 bindsym $mod+i exec calamares_polkit
 bindsym $mod+Ctrl+a exec gnome-terminal -e 'setup' # TODO
 bindsym $mod+F2 exec google-chrome-stable
-bindsym $mod+F3 exec pcmanfm
+bindsym $mod+F3 exec nautilus
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
 bindsym $mod+t exec --no-startup-id pkill compton 
