@@ -1,1 +1,8 @@
-rofi.theme: /usr/share/rofi/themes/Dark.rasi
+rofi.theme: /usr/share/rofi/themes/arthur.rasi
+#rofi.theme: /usr/share/rofi/themes/lb.rasi
+#rofi.theme: /usr/share/rofi/themes/Monokai.rasi
+#rofi.theme: /usr/share/rofi/themes/Pop-Dark.rasi
+#rofi.theme: /usr/share/rofi/themes/solarized_alternate.rasi
+#rofi.theme: /usr/share/rofi/themes/solarized.rasi
+#rofi.theme: /usr/share/rofi/themes/Adapta-Nokto.rasi
+#rofi.theme: /usr/share/rofi/themes/Arc-Dark.rasi
